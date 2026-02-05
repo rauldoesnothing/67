@@ -14,9 +14,18 @@ A real-time web app that tracks your "67" gestures and voice commands. The goal:
   - Progress bar showing % toward 100,000 goal
   - Status indicators for gesture and audio detection
 
-- **Persistent Progress**: Your count is saved locally and persists between sessions
+- **Debug Mode**: Advanced controls for fine-tuning detection:
+  - Real-time detection status (hands detected, shake velocity, audio confidence, cooldown)
+  - Adjustable shake velocity threshold (0.02-0.20)
+  - Configurable shake duration (3-20 frames)
+  - Audio confidence threshold (0.3-0.95)
+  - Custom cooldown timing (200-3000ms)
+  - Detection window adjustment (200-2000ms)
+  - Toggle hand tracking visualization
+  - Show velocity vectors option
+  - Reset counter button
 
-- **1-second Cooldown**: Prevents accidental double-counting
+- **Persistent Progress**: Your count is saved locally and persists between sessions
 
 ## How to Use
 
@@ -25,6 +34,15 @@ A real-time web app that tracks your "67" gestures and voice commands. The goal:
 3. Allow camera and microphone permissions
 4. Perform the gesture (shake both hands up and down) while saying "67"
 5. Watch your counter increase!
+
+### Using Debug Mode
+
+Click the "Debug Mode" button in the top-right corner to access advanced controls:
+- Monitor real-time detection status for all components
+- Adjust sensitivity thresholds if detection is too sensitive or not sensitive enough
+- View hand tracking overlays and velocity vectors
+- Fine-tune timing parameters for your specific setup
+- Reset counter if needed
 
 ## Technical Details
 
