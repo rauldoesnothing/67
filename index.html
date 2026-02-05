@@ -22,12 +22,20 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            overflow: hidden;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+
+        .main-container {
+            display: flex;
+            gap: 20px;
+            max-width: 1600px;
+            width: 100%;
         }
 
         .container {
             position: relative;
-            width: 90vw;
+            flex: 1;
             max-width: 1200px;
             height: 90vh;
             background: rgba(0, 0, 0, 0.8);
@@ -218,45 +226,356 @@
         .start-button.hidden {
             display: none;
         }
+
+        /* Debug Panel Styles */
+        .debug-panel {
+            width: 350px;
+            max-height: 90vh;
+            background: rgba(0, 0, 0, 0.9);
+            border-radius: 20px;
+            padding: 20px;
+            color: white;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .debug-panel.hidden {
+            display: none;
+        }
+
+        .debug-toggle-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 12px 24px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .debug-toggle-btn:hover {
+            background: rgba(0, 255, 0, 0.2);
+            transform: scale(1.05);
+        }
+
+        .debug-header {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(0, 255, 0, 0.3);
+        }
+
+        .debug-header h3 {
+            font-size: 1.5rem;
+            color: #00ff00;
+            margin-bottom: 5px;
+        }
+
+        .debug-section {
+            margin-bottom: 25px;
+        }
+
+        .debug-section h4 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #00ccff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .param-control {
+            margin-bottom: 20px;
+        }
+
+        .param-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .param-name {
+            color: #ccc;
+        }
+
+        .param-value {
+            color: #00ff00;
+            font-weight: bold;
+            font-family: monospace;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.2);
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #00ff00;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #00ff00;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+            border: none;
+        }
+
+        .debug-indicator {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .indicator-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #444;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .indicator-dot.active {
+            background: #00ff00;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.8);
+        }
+
+        .indicator-label {
+            flex: 1;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        .indicator-value {
+            font-weight: bold;
+            color: #00ccff;
+            font-size: 0.9rem;
+            font-family: monospace;
+        }
+
+        .checkbox-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .checkbox-control input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .checkbox-control label {
+            flex: 1;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .reset-button {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            margin-top: 10px;
+            background: rgba(255, 0, 0, 0.3);
+            border: 2px solid #ff6b6b;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .reset-button:hover {
+            background: rgba(255, 0, 0, 0.5);
+            transform: scale(1.02);
+        }
+
+        @media (max-width: 1400px) {
+            .main-container {
+                flex-direction: column;
+            }
+
+            .debug-panel {
+                width: 100%;
+                max-width: 1200px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .counter-number {
+                font-size: 80px;
+            }
+
+            .debug-toggle-btn {
+                top: 10px;
+                right: 10px;
+                padding: 8px 16px;
+                font-size: 12px;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="video-container">
-            <video id="video" autoplay playsinline></video>
-            <canvas id="canvas"></canvas>
-            
-            <div class="overlay">
-                <div class="goal-display">
-                    <div class="goal-text">GOAL</div>
-                    <div class="goal-number">100,000</div>
-                </div>
+    <button class="debug-toggle-btn" id="debugToggle">Debug Mode</button>
 
-                <div class="status-indicator">
-                    <div class="status-item">
-                        <div class="status-dot" id="gestureStatus"></div>
-                        <span>Gesture Detected</span>
+    <div class="main-container">
+        <div class="container">
+            <div class="video-container">
+                <video id="video" autoplay playsinline></video>
+                <canvas id="canvas"></canvas>
+                
+                <div class="overlay">
+                    <div class="goal-display">
+                        <div class="goal-text">GOAL</div>
+                        <div class="goal-number">100,000</div>
                     </div>
-                    <div class="status-item">
-                        <div class="status-dot" id="audioStatus"></div>
-                        <span>Audio Detected</span>
+
+                    <div class="status-indicator">
+                        <div class="status-item">
+                            <div class="status-dot" id="gestureStatus"></div>
+                            <span>Gesture Detected</span>
+                        </div>
+                        <div class="status-item">
+                            <div class="status-dot" id="audioStatus"></div>
+                            <span>Audio Detected</span>
+                        </div>
                     </div>
-                </div>
 
-                <div class="counter-display">
-                    <div class="counter-number" id="counterNumber">0</div>
-                    <div class="counter-label">67 Count</div>
-                </div>
+                    <div class="counter-display">
+                        <div class="counter-number" id="counterNumber">0</div>
+                        <div class="counter-label">67 Count</div>
+                    </div>
 
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progressFill">0%</div>
-                </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill">0%</div>
+                    </div>
 
-                <div class="success-flash" id="successFlash"></div>
+                    <div class="success-flash" id="successFlash"></div>
+                </div>
             </div>
+
+            <button class="start-button" id="startButton">Start Challenge</button>
         </div>
 
-        <button class="start-button" id="startButton">Start Challenge</button>
+        <div class="debug-panel hidden" id="debugPanel">
+            <div class="debug-header">
+                <h3>Debug Controls</h3>
+                <p style="font-size: 0.85rem; color: #888;">Adjust detection parameters</p>
+            </div>
+
+            <div class="debug-section">
+                <h4>Detection Status</h4>
+                <div class="debug-indicator">
+                    <div class="indicator-dot" id="debugGestureIndicator"></div>
+                    <span class="indicator-label">Hands Detected</span>
+                    <span class="indicator-value" id="debugHandsCount">0/2</span>
+                </div>
+                <div class="debug-indicator">
+                    <div class="indicator-dot" id="debugShakeIndicator"></div>
+                    <span class="indicator-label">Shake Detected</span>
+                    <span class="indicator-value" id="debugShakeValue">0.00</span>
+                </div>
+                <div class="debug-indicator">
+                    <div class="indicator-dot" id="debugAudioIndicator"></div>
+                    <span class="indicator-label">Audio Match</span>
+                    <span class="indicator-value" id="debugAudioConfidence">0%</span>
+                </div>
+                <div class="debug-indicator">
+                    <div class="indicator-dot" id="debugCooldownIndicator"></div>
+                    <span class="indicator-label">Ready to Count</span>
+                    <span class="indicator-value" id="debugCooldownTime">Ready</span>
+                </div>
+            </div>
+
+            <div class="debug-section">
+                <h4>Gesture Settings</h4>
+                <div class="param-control">
+                    <div class="param-label">
+                        <span class="param-name">Shake Velocity Threshold</span>
+                        <span class="param-value" id="shakeThresholdValue">0.08</span>
+                    </div>
+                    <input type="range" id="shakeThreshold" min="0.02" max="0.20" step="0.01" value="0.08">
+                </div>
+                <div class="param-control">
+                    <div class="param-label">
+                        <span class="param-name">Shake Duration (frames)</span>
+                        <span class="param-value" id="shakeDurationValue">8</span>
+                    </div>
+                    <input type="range" id="shakeDuration" min="3" max="20" step="1" value="8">
+                </div>
+            </div>
+
+            <div class="debug-section">
+                <h4>Audio Settings</h4>
+                <div class="param-control">
+                    <div class="param-label">
+                        <span class="param-name">Confidence Threshold</span>
+                        <span class="param-value" id="audioConfidenceValue">0.60</span>
+                    </div>
+                    <input type="range" id="audioConfidence" min="0.3" max="0.95" step="0.05" value="0.60">
+                </div>
+            </div>
+
+            <div class="debug-section">
+                <h4>Timing Settings</h4>
+                <div class="param-control">
+                    <div class="param-label">
+                        <span class="param-name">Detection Cooldown (ms)</span>
+                        <span class="param-value" id="cooldownValue">1000</span>
+                    </div>
+                    <input type="range" id="cooldown" min="200" max="3000" step="100" value="1000">
+                </div>
+                <div class="param-control">
+                    <div class="param-label">
+                        <span class="param-name">Detection Window (ms)</span>
+                        <span class="param-value" id="detectionWindowValue">500</span>
+                    </div>
+                    <input type="range" id="detectionWindow" min="200" max="2000" step="100" value="500">
+                </div>
+            </div>
+
+            <div class="debug-section">
+                <h4>Visual Options</h4>
+                <div class="checkbox-control">
+                    <input type="checkbox" id="showHandTracking" checked>
+                    <label for="showHandTracking">Show Hand Tracking</label>
+                </div>
+                <div class="checkbox-control">
+                    <input type="checkbox" id="showVelocityVectors">
+                    <label for="showVelocityVectors">Show Velocity Vectors</label>
+                </div>
+            </div>
+
+            <div class="debug-section">
+                <button class="reset-button" id="resetCounter">Reset Counter</button>
+            </div>
+        </div>
     </div>
 
     <script src="app.js"></script>
